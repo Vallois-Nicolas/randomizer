@@ -1,0 +1,4 @@
+RewriteEngine on
+Options +FollowSymLinks
+RewriteRule home /index.php?page=home [L]
+RewriteRule add/character /index.php?page=addCharacter
