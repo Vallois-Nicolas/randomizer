@@ -106,4 +106,31 @@ class Characters extends Database {
             return false;
         }
     }
+
+    public function addCharacter($charName, $charPath, $universe) {
+        $query = "INSERT INTO `characters` (`name`, `img_path`, `id_universe`) VALUES (:charName, :charPath, :universe)";
+        $buildQuery = $this->getDb()->prepare($query);
+        $buildQuery->bindValue('charName', $charName, PDO::PARAM_STR);
+        $buildQuery->bindValue('charPath', $charPath, PDO::PARAM_STR);
+        $buildQuery->bindValue('universe', $universe, PDO::PARAM_INT);
+        if($buildQuery->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function searchCharacterByUniverse($charName, $universe) {
+        $query = "SELECT `id` FROM `characters` WHERE `name` = :charName AND `id_universe` = :universe";
+        $buildQuery = $this->getDb()->prepare($query);
+        $buildQuery->bindValue('charName', $charName, PDO::PARAM_STR);
+        $buildQuery->bindValue('universe', $universe, PDO::PARAM_INT);
+        $buildQuery->execute();
+        $resultQuery = $buildQuery->fetch();
+        if ($resultQuery) {
+            return $resultQuery;
+        } else {
+            return false;
+        }
+    }
 }

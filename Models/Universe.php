@@ -48,4 +48,15 @@ class Universe extends Database {
 
         return $this;
     }
+
+    public function getAllUniverses() {
+        $query = "SELECT * FROM `universe`";
+        $buildQuery = $this->getDb()->query($query);
+        $resultQuery = $buildQuery->fetchAll(PDO::FETCH_ASSOC);
+        if ($resultQuery) {
+            return $resultQuery;
+        } else {
+            return false;
+        }
+    }
 }
