@@ -59,4 +59,28 @@ class Universe extends Database {
             return false;
         }
     }
+
+    public function searchUniverse($uniName) {
+        $query = "SELECT `id` FROM `universe` WHERE `name` = :name";
+        $buildQuery = $this->getDb()->prepare($query);
+        $buildQuery->bindValue('name', $uniName, PDO::PARAM_STR);
+        $buildQuery->execute();
+        $resultQuery = $buildQuery->fetch();
+        if($resultQuery) {
+            return $resultQuery;
+        } else {
+            return false;
+        }
+    }
+
+    public function addUniverse($uniName) {
+        $query = "INSERT INTO `universe` (`name`) VALUE (:uniName)";
+        $buildQuery = $this->getDb()->prepare($query);
+        $buildQuery->bindValue('uniName', $uniName, PDO::PARAM_STR);
+        if($buildQuery->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

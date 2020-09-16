@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../node_modules/tailwindcss/dist/tailwind.css">
-    <title>Randomizer - Ajout Personnage</title>
+    <title>Randomizer - Ajout Univers</title>
 </head>
 
 <body class="bg-gradient-to-r from-teal-400 to-blue-500">
@@ -40,38 +40,23 @@
             <?php
         }
         ?>
-        <p class="text-3xl font-bold text-white text-center mb-5">Ajouter un personnage provenant d'un univers existant</p>
+        <p class="text-3xl font-bold text-white text-center mb-5">Ajouter un univers</p>
         <div class="w-1/2 mx-auto bg-white rounded-lg py-4 px-10 shadow-2xl">
             <form action="" method="post">
-                <label for="charName">Nom du personnage :</label>
-                <input type="text" name="charName" id="charName" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight hover:border-gray-500 focus:outline-none focus:shadow-outline mb-5" placeholder="Nom du personnage">
-                <label for="charPath">Lien vers l'image (URL) :</label>
-                <input type="text" name="charPath" id="charPath" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight hover:border-gray-500 focus:outline-none focus:shadow-outline mb-5" placeholder="Lien vers l'image">
-                <label for="universe">Univers du personnage :</label>
-                <select name="universe" id="universe" class="mb-6 block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-                    <option value="0" disabled selected>Choisir un univers</option>
-                    <?php
-                    if (isset($allUniverses)) {
-                        foreach($allUniverses as $universe) {
-                            ?>
-                            <option value="<?= $universe['id'] ?>"><?= $universe['name'] ?></option>
-                            <?php
-                        }
-                    }
-                    ?>
-                </select>
+                <label for="uniName">Nom de l'univers :</label>
+                <input type="text" name="uniName" id="uniName" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight hover:border-gray-500 focus:outline-none focus:shadow-outline mb-5" placeholder="Nom de l'univers">
                 <div class="text-center w-full mb-4">
-                    <p class="font-bold text-orange-500 mb-4">Avant de soumettre le personnage, vérifier d'abord s'il n'est pas déjà présent dans la base de données !</p>
-                    <button type="button" id="verifyNewChar" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Vérifier</button>
+                    <p class="font-bold text-orange-500 mb-4">Avant de soumettre l'univers, vérifier d'abord s'il n'est pas déjà présent dans la base de données !</p>
+                    <button type="button" id="verifyNewUni" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Vérifier</button>
                 </div>
                 <div class="text-center w-full">
-                    <button disabled class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full opacity-50 cursor-not-allowed" type="submit" name="submitNewChar" id="submitNewChar">Envoyer</button>
+                    <button disabled class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full opacity-50 cursor-not-allowed" type="submit" name="submitNewUni" id="submitNewUni">Envoyer</button>
                 </div>
             </form>
         </div>
     </div>
     <script src="../node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="../assets/js/ScriptAddCharacter.js"></script>
+    <script src="../assets/js/ScriptAddUniverse.js"></script>
 </body>
 
 </html>
